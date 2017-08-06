@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "39747633516",
+    "firebase_url": "https://permissions-manager.firebaseio.com",
+    "project_id": "permissions-manager",
+    "storage_bucket": "permissions-manager.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39747633516:android:f0f5f5b0d4846e79",
+        "android_client_info": {
+          "package_name": "com.hr.permissionsmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "39747633516-imh3hrk4fnc290cadu8gdt7k31eroso3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hr.permissionsmanager",
+            "certificate_hash": "473d398d0367a588c27ef14d1600f7d46b07f752"
+          }
+        },
+        {
+          "client_id": "39747633516-2mldbpjkohom91i8d8cvba4akk4jvn48.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAebnWZ0G3Ne42YfgJQ2EzhjzED9BxNvHg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "39747633516-2mldbpjkohom91i8d8cvba4akk4jvn48.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

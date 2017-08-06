@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/spacing_normal"
+    android:paddingVertical="@dimen/spacing_large">
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/icon_normal"
+        android:layout_height="@dimen/icon_normal"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:background="@drawable/icon_background"
+        android:padding="@dimen/icon_padding_normal"
+        tools:src="@drawable/ic_storage" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/icon"
+        android:textColor="@color/black_87"
+        android:textSize="@dimen/font_normal"
+        tools:text="Sensor" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_toEndOf="@+id/icon"
+        android:textColor="@color/black_54"
+        android:textSize="@dimen/font_small"
+        tools:text="@string/description_sensor" />
+
+
+</RelativeLayout>
