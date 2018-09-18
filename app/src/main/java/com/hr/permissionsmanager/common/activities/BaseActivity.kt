@@ -6,7 +6,9 @@ import android.view.MenuItem
 import butterknife.BindDimen
 import butterknife.ButterKnife
 import com.crashlytics.android.Crashlytics
+import com.google.android.gms.ads.MobileAds
 import com.hr.permissionsmanager.R
+import com.hr.permissionsmanager.common.utils.PUBLISHER_ID
 import io.fabric.sdk.android.Fabric
 
 abstract class BaseActivity : AppCompatActivity() {
@@ -22,6 +24,8 @@ abstract class BaseActivity : AppCompatActivity() {
         Fabric.with(this, Crashlytics())
         setContentView(layout)
         ButterKnife.bind(this)
+        MobileAds.initialize(this, PUBLISHER_ID)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

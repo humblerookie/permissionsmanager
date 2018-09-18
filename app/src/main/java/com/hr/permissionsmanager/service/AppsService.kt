@@ -2,6 +2,7 @@ package com.hr.permissionsmanager.service
 
 import android.content.Context
 import android.content.pm.PackageInfo
+import android.util.Log
 import com.hr.permissionsmanager.common.utils.*
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -17,16 +18,22 @@ class AppsService {
         return getInstalledApplications(context)
                 .observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
-                .filter({ appInfo -> appInfo.requestedPermissionsFlags != null })
-                .filter({ appInfo ->
-                    val hasPermissionGranted: Boolean = appInfo.requestedPermissions.indices
-                            .any { it ->
-                                !isSystem(appInfo.applicationInfo)
-                                        && getDangerousGroup(appInfo.requestedPermissions[it], context).equals(permissionGroup)
-                                        && isGranted(appInfo.requestedPermissionsFlags[it])
-                            }
-                    hasPermissionGranted
-                })
+                .filter { appInfo -> appInfo.requestedPermissionsFlags != null }
+                .filter { appInfo ->
+                    if (appInfo.packageName == "com.instagram.android") {
+                        Log.d("Abc", "Abc")
+                    }
+                    if (!isSystem(appInfo.applicationInfo)) {
+                        appInfo.requestedPermissions.indices
+                                .any { it ->
+                                    getDangerousGroup(appInfo.requestedPermissions[it], context) == permissionGroup
+                                            && isGranted(appInfo.requestedPermissionsFlags[it])
+                                }
+                    } else {
+                        false
+                    }
+
+                }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(observer)
 
@@ -37,7 +44,7 @@ class AppsService {
         return Observable.just(1)
                 .observeOn(Schedulers.io())
                 .subscribeOn(Schedulers.io())
-                .flatMap { getPermissionGroups()!! }
+                .flatMap { getPermissionGroups() }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(observer)
 

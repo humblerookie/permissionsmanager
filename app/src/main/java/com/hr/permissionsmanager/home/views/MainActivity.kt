@@ -9,6 +9,8 @@ import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.ProgressBar
 import butterknife.BindView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.hr.permissionsmanager.R
 import com.hr.permissionsmanager.common.activities.BaseActivity
 import com.hr.permissionsmanager.common.widgets.SimpleDividerItemDecoration
@@ -21,9 +23,18 @@ import java.lang.ref.WeakReference
 class MainActivity : BaseActivity(), View.OnClickListener, MainView {
 
 
-    @BindView(R.id.list) @JvmField var list: RecyclerView? = null
-    @BindView(R.id.toolbar) @JvmField var toolbar: Toolbar? = null
-    @BindView(R.id.progress) @JvmField var progress: ProgressBar? = null
+    @BindView(R.id.list)
+    @JvmField
+    var list: RecyclerView? = null
+    @BindView(R.id.toolbar)
+    @JvmField
+    var toolbar: Toolbar? = null
+    @BindView(R.id.progress)
+    @JvmField
+    var progress: ProgressBar? = null
+    @BindView(R.id.adView)
+    @JvmField
+    var adView: AdView? = null
 
     var adapter: PermissionGroupAdapter? = null
     var presenter: MainPresenter? = null
@@ -31,6 +42,8 @@ class MainActivity : BaseActivity(), View.OnClickListener, MainView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
+        var adRequest = AdRequest.Builder().build()
+        adView?.loadAd(adRequest)
         toolbar!!.elevation = toolbarElevation
         list!!.addItemDecoration(SimpleDividerItemDecoration(this))
         list!!.layoutManager = LinearLayoutManager(this)
@@ -65,5 +78,28 @@ class MainActivity : BaseActivity(), View.OnClickListener, MainView {
 
     override fun showData(permissions: List<String>) {
         adapter!!.setData(permissions)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        if (adView != null) {
+            adView?.pause()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (adView != null) {
+            adView?.resume()
+        }
+    }
+
+    override fun onDestroy() {
+        presenter?.onDestroyed()
+        if (adView != null) {
+            adView?.destroy()
+        }
+        super.onDestroy()
+
     }
 }

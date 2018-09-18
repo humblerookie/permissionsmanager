@@ -7,20 +7,29 @@ apply plugin: 'io.fabric'
 
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.hr.permissionsmanager"
         minSdkVersion 23
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 27
+        versionCode 3
+        versionName "1.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            buildConfigField "String", "ADMOB_ID", "\"ca-app-pub-3940256099942544~3347511713\""
+            resValue "string", "ad_main_unit", "ca-app-pub-3940256099942544/6300978111"
+            resValue "string", "ad_category_apps_unit", "ca-app-pub-3940256099942544/6300978111"
+        }
         release {
             minifyEnabled true
             shrinkResources true
+            buildConfigField "String", "ADMOB_ID", "\"ca-app-pub-1860230656449514~4217872183\""
+            resValue "string", "ad_main_unit", "ca-app-pub-1860230656449514/9561520592"
+            resValue "string", "ad_category_apps_unit", "ca-app-pub-1860230656449514/2496635556"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -61,8 +70,10 @@ dependencies {
     implementation "com.jakewharton:butterknife:$versions.butterKnife"
     implementation "com.jakewharton.timber:timber:$versions.timber"
     implementation "jp.wasabeef:recyclerview-animators:$versions.recyclerviewanimators"
+    implementation 'com.google.android.gms:play-services-ads:15.0.0'
+
     kapt "com.jakewharton:butterknife-compiler:$versions.butterKnife"
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+    implementation('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
         transitive = true
     }
 }

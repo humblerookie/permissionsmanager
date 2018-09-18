@@ -1,6 +1,6 @@
 ext {
     versions = [
-            support              : "26.0.0",
+            support              : "26.1.0",
             okHttp               : "3.8.1",
             espresso             : '2.2.2',
             espressoRunner       : '0.5',
@@ -35,6 +35,11 @@ ext {
     rxJava = [
             rxKotlin : "io.reactivex.rxjava2:rxkotlin:$versions.rxKotlin",
             rxAndroid: "io.reactivex.rxjava2:rxandroid:$versions.rxAndroid"
+    ]
+
+    googlePlay = [
+            firebaseCore     : "com.google.firebase:firebase-core:$versions.firebase",
+            firebaseMessaging: "com.google.firebase:firebase-messaging:$versions.firebase"
     ]
 
     unitTest = [

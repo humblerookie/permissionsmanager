@@ -10,7 +10,7 @@ import io.reactivex.Observable
 import java.lang.reflect.Modifier
 
 
-fun getPermissionGroups(): Observable<HashMap<String, String>>? {
+fun getPermissionGroups(): Observable<HashMap<String, String>> {
     val fields = Manifest.permission_group::class.java.declaredFields
     var groups = HashMap<String, String>()
 
@@ -35,7 +35,7 @@ fun getDangerousGroup(permission: String, context: Context): String {
     try {
         permInfo = context.packageManager.getPermissionInfo(permission, 0)
 
-        return if (permInfo.group != null && permInfo.protectionLevel == PermissionInfo.PROTECTION_DANGEROUS) permInfo.group else "";
+        return if (permInfo.group != null) permInfo.group else ""
     } catch (e: PackageManager.NameNotFoundException) {
     }
     return ""

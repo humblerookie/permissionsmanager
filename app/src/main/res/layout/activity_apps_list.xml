@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/ad_main_unit"></com.google.android.gms.ads.AdView>
+        ads:adUnitId="@string/ad_category_apps_unit" />
 
 
     <ProgressBar

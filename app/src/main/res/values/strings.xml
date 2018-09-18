@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Permissions Manager</string>
-    <string name="device_admin">Device Admin</string>
-    <string name="device_admin_description">Permission Manager needs admin privileges so that you can modify other app permission</string>
-
     <string name="description_storage">Apps with this permission can access/modify\nfiles stored on this device.</string>
     <string name="description_location">This permission allows access  to your\nlocation unless disabled from settings.</string>
     <string name="description_contacts">When provided apps can share your address\nbook unless specified otherwise.</string>

@@ -18,7 +18,7 @@ class PermissionListPresenterImpl(var view: WeakReference<PermissionListView>, v
         disposables.add(service.getAppsForPermission(context, permissionGroup, getObserver()))
     }
 
-    fun getObserver(): DisposableObserver<PackageInfo> {
+    private fun getObserver(): DisposableObserver<PackageInfo> {
         return object : DisposableObserver<PackageInfo>() {
             override fun onNext(t: PackageInfo) {
                 view.get()?.addAppToView(t)
